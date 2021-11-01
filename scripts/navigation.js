@@ -18,3 +18,5 @@ function toRegister()
     alert("Navigating...");
     window.location.assign('register.html');
 }
+
+// Testing.
