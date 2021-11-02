@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'ceviche';
+    src: url('fonts/CevicheOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'perma';
+    src: url('fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.centric {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(149, 194, 215);
+  }
+
+  .logo-text {
+    text-align: center;
+    font-family: ceviche;
+    font-size: 75px;
+  }
+
+  .directions-text {
+      text-align: center;
+      font-family: perma;
+  }
+
+  .circle-container {
+        /* Creats the circle container. */
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: white;
+
+        /* Centers the contents within the circle. */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* Displays the circle in the exact middle of the screen. */
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+  }
+
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .img-div {
+    position:absolute;
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    width:100%;
+  }
