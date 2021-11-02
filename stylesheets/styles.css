@@ -12,19 +12,23 @@
     font-style: normal;
   }
 
-.centric {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-body {
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgb(149, 194, 215);
   }
+
+  button {
+      margin-top: 8px;
+  }
+
+  .centric {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
   .logo-text {
     text-align: center;
@@ -69,6 +73,7 @@ body {
     transform: translate(-50%, -50%);
   }
 
+  /* Currently out of use. */
   .img-div {
     position:absolute;
     top:0; 
