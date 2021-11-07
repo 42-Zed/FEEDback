@@ -20,8 +20,19 @@ var password = document.getElementById("passwordInput");
 const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
 promise.catch(e => alert(e.message));
 
-alert("Registering...");
+setTimeout(() => { // Timeout used to give the Firebase time to authenticate.
+    auth.signInWithEmailAndPassword(email.value, password.value); // Trys to log the newly registered user in.
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {  // If successful, navigates to login.
+          toLogin();
+          alert("Account already exists. Proceed to login.");
+          auth.signOut();  // Signs the user out to insure credential integrity. 
 
+        } else {
+          alert("Registration unsuccessful.")
+        }
+      });
+}, 2000);
 }
 
 // logs the user in through Firebase method "signInWithEmailAndPassword()".
@@ -33,6 +44,16 @@ var password = document.getElementById('passwordInput');
 const promise = auth.signInWithEmailAndPassword(email.value, password.value);
 promise.catch(e => alert(e.message));
 
+setTimeout(() => { // Timeout used to give time to the Firebase to authenticate
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) { // If login was successful, navigate to index.
+          toIndex();
+        } else {
+          alert("Login unsuccessful.")
+        }
+      });
+}, 2000);
+
 }
 
 // Logout method to terminate user authorization.
@@ -43,12 +64,12 @@ function logout() {
 
 }
 
-// Constantly checks if a user is currently signed in.
+// Constantly checks if and what user is currently signed in.
 auth.onAuthStateChanged(function(user) {
 
 if(user){
     var email = user.email;
-    alert("Active User " + email);
+    // alert("Active User " + email);
 }else{
     alert("No active user");
 }
