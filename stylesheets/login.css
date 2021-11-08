@@ -74,26 +74,6 @@ button {
       transform: translateY(-50%);
 }
 
-.square-container {
-  /* Creates the square */
-  width: 700px;
-  height: 792px;
-  border-style: solid;
-  background: black;
-
-  /* Centers the contents within the square. */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Displays the square in the exact middle of the screen. */
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 .center {
   margin: 0;
   position: absolute;
