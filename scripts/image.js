@@ -1,4 +1,4 @@
-var ImgName, ImgUrl;
+var ImgName, ImgURL;
 var files = [];
 var reader = new FileReader();
 
@@ -6,50 +6,17 @@ var reader = new FileReader();
 // import {
 //     initializeApp
 // } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCzWFqqY0iqx1eXd9uXLD2ELsoE-OiLvuw",
-//     authDomain: "feedback-2d8bd.firebaseapp.com",
-//     projectId: "feedback-2d8bd",
-//     storageBucket: "feedback-2d8bd.appspot.com",
-//     messagingSenderId: "85959730833",
-//     appId: "1:85959730833:web:56618073e1f6898c55c130"
-// };
-
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-
-// Trigger File Dialog onClick of the Select Button
-// document.getElementById("select").onclick = function (e) {
-//     var input = document.createElement('input');
-//     input.type = 'file';
-//     input.click();
-
-//     input.onchange = e => {
-//         files = e.target.files;
-//         reader = new FileReader();
-//         reader.onload = function () {
-//             document.getElementById("image").src = reader.result;
-//         }
-//         reader.readAsDataURL(files[0]);
-//     }
-//     input.click();
-// }
-
+//Select an Image Locally
 function selectImage() {
     'use strict';
 
     document.getElementById("select").addEventListener("click", function (e) {
         console.log("The button was clicked!");
-        //e.preventDefault();
 
         var input = document.createElement('input');
         input.type = 'file';
-        input.click();
 
+        // "=>" creates an anonymous function
         input.onchange = e => {
             files = e.target.files;
             reader = new FileReader();
@@ -58,7 +25,44 @@ function selectImage() {
             }
             reader.readAsDataURL(files[0]);
         }
-        //input.click();
+
+        input.click();
+    });
+}
+
+//Upload an Image
+function uploadImage() {
+    'use strict';
+
+    document.getElementById("upload").addEventListener("click", function () {
+        ImgName = document.getElementById("namebox").value;
+        //Store the image into a unique folder specific to the current logged in User based on FB UID
+        var uploadTask = firebase.storage().ref(firebase.auth().currentUser.uid + '/Images/' + ImgName + ".png").put(files[0]);
+
+        uploadTask.on('state_changed', function (snapshot) {
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                document.getElementById("upProgress").innerHTML = 'Upload' + progress + "%";
+            },
+
+            //Error Handling
+            function (error) {
+                alert('Error in saving the image');
+            },
+
+            //Submitting Image Link to Firebase DB
+            function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+                    ImgURL = url;
+                });
+
+                firebase.database().ref('Pictures/' + ImgName).set({
+                    Name: ImgName,
+                    Link: ImgURL
+                });
+
+                alert('image added successfully');
+            }
+        );
     });
 }
 
@@ -66,6 +70,7 @@ function initializeEvents() {
     'use strict';
 
     selectImage();
+    uploadImage();
     console.log("I'm Running!");
 }
 
