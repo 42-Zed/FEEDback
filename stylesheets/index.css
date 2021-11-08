@@ -5,12 +5,19 @@
     font-style: normal;
   }
   
-  @font-face {
+@font-face {
     font-family: 'perma';
     src: url('fonts/PermanentMarker-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
+
+@font-face {
+    font-family: 'century-gothic'; 
+    src: url('fonts/CenturyGothic.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal; 
+}
 
 body {
     display: flex;
@@ -29,7 +36,9 @@ body {
     width: 700px;
     height: 792px;
     border: 1px solid black;
+    box-shadow: 4px 4.5px;
     background: #fef9f8;
+    border-radius: 25px; 
   
     /* Centers the contents within the square. */
     display: flex;
@@ -44,7 +53,7 @@ body {
     transform: translateY(-50%);
   }
 
-  .center {
+.center {
     margin: 0;
     position: absolute;
     top: 50%;
@@ -52,3 +61,8 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+.btn-warning { 
+    display: center; 
+}
+
