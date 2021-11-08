@@ -1,0 +1,24 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "firebaseconfig.js",
+  "type": "module",
+  "dependencies": {
+    "firebase": "^9.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/42-Zed/FEEDback.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/42-Zed/FEEDback/issues"
+  },
+  "homepage": "https://github.com/42-Zed/FEEDback#readme"
+}
