@@ -66,11 +66,23 @@ function uploadImage() {
     });
 }
 
+//Retrieve an Image
+function retrieveImage() {
+    document.getElementById("retrieve").addEventListener("click", function() {
+        ImgName = document.getElementById("namebox").value;
+        console.log()
+        firebase.database.ref(firebase.auth().currentUser.uid + '/Images/' + ImgName).on('value', function(snapshot) {
+            document.getElementById('image').src = snapshot.val().Link;
+        })
+    });
+}   
+
 function initializeEvents() {
     'use strict';
 
     selectImage();
     uploadImage();
+    retrieveImage();
     console.log("I'm Running!");
 }
 
