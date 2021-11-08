@@ -12,12 +12,14 @@
     font-style: normal;
   }
 
+/* Commented out because it was throwing an error - we don't have this font in the /fonts folder ATM
 @font-face {
     font-family: 'century-gothic'; 
     src: url('fonts/CenturyGothic.ttf') format('truetype');
     font-weight: 400; 
     font-style: normal; 
-}
+} 
+*/
 
 body {
     display: flex;
@@ -64,5 +66,9 @@ body {
 
 .btn-warning { 
     display: center; 
+}
+
+.button {
+  text-align:center;
 }
 

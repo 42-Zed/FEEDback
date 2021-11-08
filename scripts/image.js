@@ -7,7 +7,7 @@ function selectImage() {
     'use strict';
 
     document.getElementById("select").addEventListener("click", function (e) {
-        console.log("The button was clicked!");
+        //console.log("The button was clicked!");
 
         var input = document.createElement('input');
         input.type = 'file';
@@ -35,9 +35,13 @@ function uploadImage() {
         //Store the image into a unique folder specific to the current logged in User based on FB UID
         var uploadTask = firebase.storage().ref(firebase.auth().currentUser.uid + '/Images/' + ImgName + ".png").put(files[0]);
 
+        //Calculate Upload Progress
         uploadTask.on('state_changed', function (snapshot) {
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                document.getElementById("upProgress").innerHTML = 'Upload' + progress + "%";
+                //Dropped the decimal places to make the upload progress cleaner
+                progress = progress.toFixed(0);
+
+                document.getElementById("upProgress").innerHTML = 'Upload Progress: ' + progress + "%";
             },
 
             //Error Handling
@@ -47,14 +51,23 @@ function uploadImage() {
 
             //Submitting Image Link to Firebase DB
             function () {
+                /*
+                Retrieve the download URL then add it to the corresponding user based on UID. Specifically,
+                we add it to an array field value within the user's document. This will allow us to pull all the
+                images associated with a specific user to display onto the user profile page.
+                */
                 uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
                     ImgURL = url;
+                    
+                    firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).update({
+                        imgLinks: firebase.firestore.FieldValue.arrayUnion(ImgURL)
+                    });
                 });
 
-                firebase.database().ref('Pictures/' + ImgName).set({
-                    Name: ImgName,
-                    Link: ImgURL
-                });
+                // firebase.database().ref('Pictures/' + ImgName).set({
+                //     Name: ImgName,
+                //     Link: ImgURL
+                // });
 
                 alert('image added successfully');
             }
@@ -62,6 +75,7 @@ function uploadImage() {
     });
 }
 
+//--------------------------------------------STILL WORK IN PROGRESS-----------------------------------------------------------
 //Retrieve an Image
 function retrieveImage() {
     document.getElementById("retrieve").addEventListener("click", function () {
