@@ -9,7 +9,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-    <link rel="stylesheet" href="stylesheets/login.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link rel="stylesheet" href="stylesheets/index.css"/>
 
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
@@ -20,41 +21,38 @@
 
 <div class="square-container">
     <centric>
+ <body class="container">
+        <style>
+            img {
+                height: 400px;
+                width: 400px;
+                border: 1px solid black;
+                background: white;
+            }
+        </style>
 
-        <body class="container">
-            <style>
-                img {
-                    height: 400px;
-                    width: 400px;
-                    border: 2px solid black;
-                    background: white;
-                }
-            </style>
+        <!--<input type="file" id="image_input" accept="image/png, image/jpg"><img class="thumbnail-image" src="" />-->
 
-            <!--<input type="file" id="image_input" accept="image/png, image/jpg"><img class="thumbnail-image" src="" />-->
+        <div class="form-group">
+        <label for="namebox" style="color:black; font-family: century-gothic; font-size: 18px;">Image Title</label>
+        <input class="form-control" id="namebox" type="text"> <br><br>
+        </div>
+        <img id="image">
+        <label id="upProgress"></label> <br><br>
 
-            <div class="form-group">
-                <label for="namebox" style="color:white">Image Title</label>
-                <input class="form-control" id="namebox" type="text"> <br><br>
-            </div>
-            <img id="image">
-            <label id="upProgress"></label> <br><br>
+        <button-alignment>
+        <button id="select" class="btn btn-warning" style="color: black;; margin-left: 35px;">Select Image</button>
+        <button id="upload" class="btn btn-warning" style="color: black;">Upload Image</button>
+        <button id="retrieve" class="btn btn-warning" style="color: black;">Retrieve Image</button>
+        </button-alignment> 
+        <br><br>
+        <button onClick="logout(); toLogin()" id="logout" class="btn btn-danger" style="margin-left: 154px;">Logout</button>
 
-            <button-alignment>
-                <button id="select" class="btn btn-warning" style="font-family: ceviche; margin-left: 35px;">Select
-                    Image</button>
-                <button id="upload" class="btn btn-warning" style="font-family: ceviche;">Upload Image</button>
-                <button id="retrieve" class="btn btn-warning" style="font-family: ceviche;">Retrieve Image</button>
-            </button-alignment>
-            <br><br>
-            <button onClick="logout(); toLogin()" id="logout" class="btn btn-danger"
-                style="margin-left: 154px">Logout</button>
-
-            <script src="scripts/navigation.js" charset="utf-8"></script>
-            <script src="scripts/firebaseconfig.js" charset="utf-8"></script>
-            <script src="scripts/image.js" charset="utf-8"></script>
-        </body>
-    </centric>
+    <script src="scripts/navigation.js" charset="utf-8"></script>
+    <script src="scripts/firebaseconfig.js" charset="utf-8"></script>
+    <script src="scripts/image.js" charset="utf-8"></script>
+</body> 
+</centric>
 </div>
 
 
