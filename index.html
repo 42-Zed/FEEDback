@@ -18,8 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 </head>
 
-<body>
-    <main>
+ <body class="container">
         <style>
             img {
                 height: 200px;
@@ -37,12 +36,12 @@
         <button id="select">Select Image</button>
         <button id="upload">Upload Image</button>
         <button id="retrieve">Retrieve Image</button> <br><br>
-        <button onClick="logout(); toLogin()" id="logout" class="btn btn-outline-primary">Logout</button>
-    </main>
+        <button onClick="logout(); toLogin()" id="logout" class="btn btn-danger">Logout</button>
 
     <script src="scripts/navigation.js" charset="utf-8"></script>
     <script src="scripts/firebaseconfig.js" charset="utf-8"></script>
     <script src="scripts/image.js" charset="utf-8"></script>
-</body>
+</body> 
+
 
 </html>
