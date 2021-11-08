@@ -11,10 +11,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
+db = firebase.database();
 
 // Registers the user through Firebase method "createUserWithEmailAndPassword()".
 function register() {
-
+  //db = firebase.database();
   var email = document.getElementById("emailInput");
   var password = document.getElementById("passwordInput");
 
@@ -31,7 +32,7 @@ function register() {
       if (user) { // If successful, navigates to login.
         console.log(email.value + "\n" + password.value);
 
-        firebase.collection("users").doc("test").set({
+        db.collection("users").doc("test").add({
           useruid: 12345,
           username: "hello111111111@gmail.com",
           password: "1234509123"
