@@ -55,7 +55,6 @@ function register() {
 
 // logs the user in through Firebase method "signInWithEmailAndPassword()".
 function login() {
-
   var email = document.getElementById('emailInput');
   var password = document.getElementById('passwordInput');
 

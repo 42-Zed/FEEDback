@@ -70,3 +70,20 @@ body {
   text-align:center;
 }
 
+/* 
+Below 2 properties are attached to the Images DIV and the
+individual images that are dynamically added. Feel free to change
+as you see fit!
+*/
+.imageList {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row
+}
+
+.thumbnail-item {
+  display:inline-block;
+  min-width: 120px;
+  max-width: 120px;
+}
+
