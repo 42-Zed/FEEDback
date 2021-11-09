@@ -75,14 +75,26 @@ function uploadImage() {
     });
 }
 
-//--------------------------------------------STILL WORK IN PROGRESS-----------------------------------------------------------
 //Retrieve an Image
 function retrieveImage() {
+    var docData;
+
     document.getElementById("retrieve").addEventListener("click", function () {
-        ImgName = document.getElementById("namebox").value;
-        console.log(firebase.auth().currentUser.uid + '/Images/' + ImgName);
-        firebase.database().ref(firebase.auth().currentUser.uid + '/Images/' + ImgName).on('value', function (snapshot) {
-            document.getElementById("image").src = snapshot.val().Link;
+        //ImgName = document.getElementById("namebox").value;
+        //console.log(firebase.auth().currentUser.uid + '/Images/' + ImgName);
+
+        //Get a reference to the current User document and retrieve the ImgLinks array from that ref
+        firebase
+        .firestore()
+        .collection("users")
+        .doc(firebase.auth().currentUser.uid)
+        .get()
+        .then((docRef) => {
+            docData = docRef.data();
+            document.getElementById("image").src = docData.imgLinks[0];
+
+            // console.log(docData);
+            // console.log(docData.imgLinks[0]);
         });
     });
 }
