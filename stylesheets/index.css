@@ -12,25 +12,23 @@
     font-style: normal;
   }
 
-/* Commented out because it was throwing an error - we don't have this font in the /fonts folder ATM
 @font-face {
-    font-family: 'century-gothic'; 
-    src: url('fonts/CenturyGothic.ttf') format('truetype');
-    font-weight: 400; 
-    font-style: normal; 
-} 
-*/
+  font-family: 'quicksand';
+  src: url('fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
+}
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-     /* Gradient background for transitioning colors */
-    background: linear-gradient(-45deg, #000000, #FFFC99, #EB6123, #FFFFFF);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
+  /* Gradient background for transitioning colors */
+  background: linear-gradient(-45deg, #000000, #FFFC99, #EB6123, #FFFFFF);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
 .square-container {
