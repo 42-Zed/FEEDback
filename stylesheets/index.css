@@ -23,23 +23,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* Gradient background for transitioning colors */
-  background: linear-gradient(-45deg, #000000, #FFFC99, #EB6123, #FFFFFF);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+  background:	#ffc09f;
 }
+
 
 .square-container {
     /* Creates the square */
     width: 700px;
-    height: 792px;
+    height: 770px;
     border: 1px solid black;
     box-shadow: 4px 4.5px;
     background: #fef9f8;
-    border-radius: 25px; 
-  
+    border-radius: 25px;
+
     /* Centers the contents within the square. */
     display: flex;
     justify-content: center;
